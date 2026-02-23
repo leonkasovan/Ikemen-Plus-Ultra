@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Project DefaultTargets="Build" ToolsVersion="14.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup Label="ProjectConfigurations">
     <ProjectConfiguration Include="Debug|Win32">
       <Configuration>Debug</Configuration>
@@ -11,7 +11,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectGuid>{0B25A118-C2C8-47D2-9079-FCF152897026}</ProjectGuid>
+    <ProjectGuid>{C6CDE82B-BF65-42F7-9D06-CD9DE67A9217}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
     <RootNamespace>sound</RootNamespace>
     <WindowsTargetPlatformVersion>8.1</WindowsTargetPlatformVersion>
@@ -53,7 +53,8 @@
       </PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
-      <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;_USRDLL;REGEX_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>WIN32;PA_USE_WASAPI;_DEBUG;_WINDOWS;_USRDLL;REGEX_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>C:\Projects\Ikemen-Plus-Ultra\src\external\portaudio\src\os\win;C:\Projects\Ikemen-Plus-Ultra\src\external\portaudio\include;C:\Projects\Ikemen-Plus-Ultra\src\external\portaudio\src\common</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -69,8 +70,8 @@
       <Optimization>Full</Optimization>
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
-      <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;_USRDLL;REGEX_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>D:\d\lib\portaudio\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;PA_USE_WASAPI;NDEBUG;_WINDOWS;_USRDLL;REGEX_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>C:\Projects\Ikemen-Plus-Ultra\src\external\portaudio\src\os\win;C:\Projects\Ikemen-Plus-Ultra\src\external\portaudio\include;C:\Projects\Ikemen-Plus-Ultra\src\external\portaudio\src\common</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -82,7 +83,42 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="..\..\..\..\external\portaudio\src\common\pa_allocation.c" />
+    <ClCompile Include="..\..\..\..\external\portaudio\src\common\pa_converters.c" />
+    <ClCompile Include="..\..\..\..\external\portaudio\src\common\pa_cpuload.c" />
+    <ClCompile Include="..\..\..\..\external\portaudio\src\common\pa_debugprint.c" />
+    <ClCompile Include="..\..\..\..\external\portaudio\src\common\pa_dither.c" />
+    <ClCompile Include="..\..\..\..\external\portaudio\src\common\pa_front.c" />
+    <ClCompile Include="..\..\..\..\external\portaudio\src\common\pa_process.c" />
+    <ClCompile Include="..\..\..\..\external\portaudio\src\common\pa_ringbuffer.c" />
+    <ClCompile Include="..\..\..\..\external\portaudio\src\common\pa_stream.c" />
+    <ClCompile Include="..\..\..\..\external\portaudio\src\common\pa_trace.c" />
+    <ClCompile Include="..\..\..\..\external\portaudio\src\hostapi\dsound\pa_win_ds.c" />
+    <ClCompile Include="..\..\..\..\external\portaudio\src\hostapi\dsound\pa_win_ds_dynlink.c" />
+    <ClCompile Include="..\..\..\..\external\portaudio\src\hostapi\wasapi\pa_win_wasapi.c" />
+    <ClCompile Include="..\..\..\..\external\portaudio\src\os\win\pa_win_coinitialize.c" />
+    <ClCompile Include="..\..\..\..\external\portaudio\src\os\win\pa_win_hostapis.c" />
+    <ClCompile Include="..\..\..\..\external\portaudio\src\os\win\pa_win_util.c" />
+    <ClCompile Include="..\..\..\..\external\portaudio\src\os\win\pa_win_waveformat.c" />
     <ClCompile Include="sound.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\..\..\external\portaudio\src\common\pa_allocation.h" />
+    <ClInclude Include="..\..\..\..\external\portaudio\src\common\pa_converters.h" />
+    <ClInclude Include="..\..\..\..\external\portaudio\src\common\pa_cpuload.h" />
+    <ClInclude Include="..\..\..\..\external\portaudio\src\common\pa_debugprint.h" />
+    <ClInclude Include="..\..\..\..\external\portaudio\src\common\pa_dither.h" />
+    <ClInclude Include="..\..\..\..\external\portaudio\src\common\pa_endianness.h" />
+    <ClInclude Include="..\..\..\..\external\portaudio\src\common\pa_gitrevision.h" />
+    <ClInclude Include="..\..\..\..\external\portaudio\src\common\pa_hostapi.h" />
+    <ClInclude Include="..\..\..\..\external\portaudio\src\common\pa_memorybarrier.h" />
+    <ClInclude Include="..\..\..\..\external\portaudio\src\common\pa_process.h" />
+    <ClInclude Include="..\..\..\..\external\portaudio\src\common\pa_ringbuffer.h" />
+    <ClInclude Include="..\..\..\..\external\portaudio\src\common\pa_stream.h" />
+    <ClInclude Include="..\..\..\..\external\portaudio\src\common\pa_trace.h" />
+    <ClInclude Include="..\..\..\..\external\portaudio\src\common\pa_types.h" />
+    <ClInclude Include="..\..\..\..\external\portaudio\src\common\pa_util.h" />
+    <ClInclude Include="..\..\..\..\external\portaudio\src\hostapi\dsound\pa_win_ds_dynlink.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

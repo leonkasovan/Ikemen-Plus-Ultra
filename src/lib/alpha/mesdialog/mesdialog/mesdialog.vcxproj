@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Project DefaultTargets="Build" ToolsVersion="14.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup Label="ProjectConfigurations">
     <ProjectConfiguration Include="Debug|Win32">
       <Configuration>Debug</Configuration>
@@ -11,7 +11,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectGuid>{B74D8420-D90E-4490-9469-C3445B7A527C}</ProjectGuid>
+    <ProjectGuid>{AE48C2D9-4F2D-409E-B55E-0169573FCBB1}</ProjectGuid>
     <RootNamespace>mesdialog</RootNamespace>
     <WindowsTargetPlatformVersion>8.1</WindowsTargetPlatformVersion>
   </PropertyGroup>
@@ -52,6 +52,7 @@
       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
       <WarningLevel>Level3</WarningLevel>
       <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
+      <AdditionalIncludeDirectories>C:\Projects\Ikemen-Plus-Ultra\src\external\zlib-1.2.8;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <ModuleDefinitionFile>mesdialog.def</ModuleDefinitionFile>
@@ -67,7 +68,7 @@
       <Optimization>Full</Optimization>
       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
       <WarningLevel>Level3</WarningLevel>
-      <AdditionalIncludeDirectories>D:\d\lib\zlib;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Projects\Ikemen-Plus-Ultra\src\external\zlib-1.2.8;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <ModuleDefinitionFile>mesdialog.def</ModuleDefinitionFile>
@@ -78,6 +79,12 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="..\..\..\..\external\zlib-1.2.8\adler32.c" />
+    <ClCompile Include="..\..\..\..\external\zlib-1.2.8\contrib\inflate86\inffas86.c" />
+    <ClCompile Include="..\..\..\..\external\zlib-1.2.8\crc32.c" />
+    <ClCompile Include="..\..\..\..\external\zlib-1.2.8\inflate.c" />
+    <ClCompile Include="..\..\..\..\external\zlib-1.2.8\inftrees.c" />
+    <ClCompile Include="..\..\..\..\external\zlib-1.2.8\zutil.c" />
     <ClCompile Include="mesdialog.cpp" />
   </ItemGroup>
   <ItemGroup>
