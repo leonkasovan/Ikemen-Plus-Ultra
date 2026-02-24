@@ -2,17 +2,17 @@
 #include "../../lib/dll/ssz/ssz/sszdef.h"
 #include "../../lib/dll/ssz/ssz/commandline.hpp"
 
-void* __stdcall MemoryKakuho(intptr_t size)
+void* SSZ_STDCALL MemoryKakuho(intptr_t size)
 {
 	return new int8_t[size];
 }
-void __stdcall MemoryKaihou(void *p)
+void SSZ_STDCALL MemoryKaihou(void *p)
 {
 	delete [] (int8_t*)p;
 }
 
-void* (__stdcall *const sszrefnewfunc)(intptr_t) = MemoryKakuho;
-void (__stdcall *const sszrefdeletefunc)(void*) = MemoryKaihou;
+void* (SSZ_STDCALL *const sszrefnewfunc)(intptr_t) = MemoryKakuho;
+void (SSZ_STDCALL *const sszrefdeletefunc)(void*) = MemoryKaihou;
 
 
 #include "../../lib/dll/ssz/ssz/typeid.h"
@@ -23,8 +23,10 @@ void (__stdcall *const sszrefdeletefunc)(void*) = MemoryKaihou;
 #include "../../lib/dll/ssz/ssz/pluginutil.hpp"
 #undef SSZ_CORE
 
-#ifndef _WIN32
+// Declare the exported Run function so it can be linked directly
+extern "C" bool SSZ_STDCALL Run(PluginUtil* pu, Reference r);
 
+#ifndef _WIN32
 #include <dlfcn.h>
 
 static HMODULE LoadLibrary(const WCHR *lpFileName)
@@ -47,13 +49,9 @@ static BOOL FreeLibrary(HMODULE hModule)
 #endif
 
 int
-#ifdef _WIN32
-WINAPI WinMain(
-	HINSTANCE hInstance,HINSTANCE hPrevInstance, PSTR szCmdLine,int iCmdShow)
-{
-#else
 main(int argc, char *argv[])
 {
+#ifndef _WIN32
 	setlocale(LC_CTYPE, "en_US.UTF-8");
 #endif
 	PluginUtil pu(nullptr, nullptr);//Dummy
@@ -65,21 +63,13 @@ main(int argc, char *argv[])
 	while(argc--) arg.push_back(pu.aToW(*argv++));
 	cmdline.swap(arg);
 #endif
-	auto i = cmdline.get()[0].find_last_of(PATHSEPARATOR);
-	std::WSTR tmp;
-	if(i != std::string::npos) tmp.append(cmdline.get()[0].data(), i+1);
-	tmp += L("lib/dll/ssz.dll");
-	auto hin = LoadLibrary(tmp.c_str());
-	if(!hin) return 1;
-	auto fp =
-		(bool (__stdcall *)(PluginUtil*, Reference))GetProcAddress(hin, "Run");
-	if(!fp) return 1;
 	Reference ref;
 	ref.init();
 	pu.wstrToRef(
 		ref, cmdline.get().size() >= 2	? cmdline.get()[1] : L("main.ssz"));
-	fp(&pu, ref);
+	// Directly call the Run function instead of loading via GetProcAddress
+	Run(&pu, ref);
+	
 	ref.releaseanddelete();
-	FreeLibrary(hin);
 	return 0;
 }
