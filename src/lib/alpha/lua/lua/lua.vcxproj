@@ -52,7 +52,8 @@
       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
       <WarningLevel>Level3</WarningLevel>
       <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
-      <AdditionalIncludeDirectories>D:\d\lib\lua\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)..\external\lua-5.2.4;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
     <Link>
       <ModuleDefinitionFile>lua.def</ModuleDefinitionFile>
@@ -61,7 +62,7 @@
       <DataExecutionPrevention>
       </DataExecutionPrevention>
       <TargetMachine>MachineX86</TargetMachine>
-      <AdditionalLibraryDirectories>D:\d\lib\lua;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -69,20 +70,53 @@
       <Optimization>Full</Optimization>
       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
       <WarningLevel>Level3</WarningLevel>
-      <AdditionalIncludeDirectories>D:\d\lib\lua\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)..\external\lua-5.2.4;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <FavorSizeOrSpeed>Speed</FavorSizeOrSpeed>
       <OmitFramePointers>true</OmitFramePointers>
+      <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
     <Link>
       <ModuleDefinitionFile>lua.def</ModuleDefinitionFile>
       <DataExecutionPrevention>
       </DataExecutionPrevention>
       <TargetMachine>MachineX86</TargetMachine>
-      <AdditionalLibraryDirectories>D:\d\lib\lua;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="..\..\..\..\external\lua-5.2.4\lapi.c" />
+    <ClCompile Include="..\..\..\..\external\lua-5.2.4\lauxlib.c" />
+    <ClCompile Include="..\..\..\..\external\lua-5.2.4\lbaselib.c" />
+    <ClCompile Include="..\..\..\..\external\lua-5.2.4\lbitlib.c" />
+    <ClCompile Include="..\..\..\..\external\lua-5.2.4\lcode.c" />
+    <ClCompile Include="..\..\..\..\external\lua-5.2.4\lcorolib.c" />
+    <ClCompile Include="..\..\..\..\external\lua-5.2.4\lctype.c" />
+    <ClCompile Include="..\..\..\..\external\lua-5.2.4\ldblib.c" />
+    <ClCompile Include="..\..\..\..\external\lua-5.2.4\ldebug.c" />
+    <ClCompile Include="..\..\..\..\external\lua-5.2.4\ldo.c" />
+    <ClCompile Include="..\..\..\..\external\lua-5.2.4\ldump.c" />
+    <ClCompile Include="..\..\..\..\external\lua-5.2.4\lfunc.c" />
+    <ClCompile Include="..\..\..\..\external\lua-5.2.4\lgc.c" />
+    <ClCompile Include="..\..\..\..\external\lua-5.2.4\linit.c" />
+    <ClCompile Include="..\..\..\..\external\lua-5.2.4\liolib.c" />
+    <ClCompile Include="..\..\..\..\external\lua-5.2.4\llex.c" />
+    <ClCompile Include="..\..\..\..\external\lua-5.2.4\lmathlib.c" />
+    <ClCompile Include="..\..\..\..\external\lua-5.2.4\lmem.c" />
+    <ClCompile Include="..\..\..\..\external\lua-5.2.4\loadlib.c" />
+    <ClCompile Include="..\..\..\..\external\lua-5.2.4\lobject.c" />
+    <ClCompile Include="..\..\..\..\external\lua-5.2.4\lopcodes.c" />
+    <ClCompile Include="..\..\..\..\external\lua-5.2.4\loslib.c" />
+    <ClCompile Include="..\..\..\..\external\lua-5.2.4\lparser.c" />
+    <ClCompile Include="..\..\..\..\external\lua-5.2.4\lstate.c" />
+    <ClCompile Include="..\..\..\..\external\lua-5.2.4\lstring.c" />
+    <ClCompile Include="..\..\..\..\external\lua-5.2.4\lstrlib.c" />
+    <ClCompile Include="..\..\..\..\external\lua-5.2.4\ltable.c" />
+    <ClCompile Include="..\..\..\..\external\lua-5.2.4\ltablib.c" />
+    <ClCompile Include="..\..\..\..\external\lua-5.2.4\ltm.c" />
+    <ClCompile Include="..\..\..\..\external\lua-5.2.4\lundump.c" />
+    <ClCompile Include="..\..\..\..\external\lua-5.2.4\lvm.c" />
+    <ClCompile Include="..\..\..\..\external\lua-5.2.4\lzio.c" />
     <ClCompile Include="lua.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

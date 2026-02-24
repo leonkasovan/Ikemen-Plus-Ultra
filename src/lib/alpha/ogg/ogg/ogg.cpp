@@ -4,9 +4,7 @@
 #include <process.h>
 #include <stdint.h>
 
-#include "libvorbis/include/vorbis/vorbisfile.h"
-#pragma comment(lib , "libvorbisfile.lib")
-
+#include "vorbis/vorbisfile.h"
 
 void* (__stdcall *sszrefnewfunc)(intptr_t);
 void (__stdcall *sszrefdeletefunc)(void*);

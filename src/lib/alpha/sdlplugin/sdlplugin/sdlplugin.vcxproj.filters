@@ -5,5 +5,30 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="sdlplugin.cpp" />
+    <ClCompile Include="..\..\..\..\external\lpng1655\pngread.c" />
+    <ClCompile Include="..\..\..\..\external\lpng1655\png.c" />
+    <ClCompile Include="..\..\..\..\external\lpng1655\pngmem.c" />
+    <ClCompile Include="..\..\..\..\external\lpng1655\pngerror.c" />
+    <ClCompile Include="..\..\..\..\external\lpng1655\pngpread.c" />
+    <ClCompile Include="..\..\..\..\external\lpng1655\pngrio.c" />
+    <ClCompile Include="..\..\..\..\external\lpng1655\pngrtran.c" />
+    <ClCompile Include="..\..\..\..\external\lpng1655\pngrutil.c" />
+    <ClCompile Include="..\..\..\..\external\lpng1655\pngset.c" />
+    <ClCompile Include="..\..\..\..\external\lpng1655\pngtrans.c" />
+    <ClCompile Include="..\..\..\..\external\lpng1655\pngwio.c" />
+    <ClCompile Include="..\..\..\..\external\lpng1655\pngwrite.c" />
+    <ClCompile Include="..\..\..\..\external\lpng1655\pngwtran.c" />
+    <ClCompile Include="..\..\..\..\external\lpng1655\pngwutil.c" />
+    <ClCompile Include="..\..\..\..\external\zlib-1.2.8\inflate.c" />
+    <ClCompile Include="..\..\..\..\external\lpng1655\pngget.c" />
+    <ClCompile Include="..\..\..\..\external\zlib-1.2.8\crc32.c" />
+    <ClCompile Include="..\..\..\..\external\zlib-1.2.8\deflate.c" />
+    <ClCompile Include="..\..\..\..\external\zlib-1.2.8\zutil.c" />
+    <ClCompile Include="..\..\..\..\external\zlib-1.2.8\adler32.c" />
+    <ClCompile Include="..\..\..\..\external\zlib-1.2.8\inftrees.c" />
+    <ClCompile Include="..\..\..\..\external\zlib-1.2.8\trees.c" />
+    <ClCompile Include="..\..\..\..\external\zlib-1.2.8\inffast.c" />
+    <ClCompile Include="..\..\..\..\external\glew-1.13.0\src\glew.c" />
+    <ClCompile Include="..\..\..\..\external\glew-1.13.0\src\visualinfo.c" />
   </ItemGroup>
 </Project>

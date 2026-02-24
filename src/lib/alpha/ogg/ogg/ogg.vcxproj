@@ -52,7 +52,9 @@
       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
       <WarningLevel>Level3</WarningLevel>
       <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
-      <AdditionalIncludeDirectories>D:\d\lib\libogg\include;D:\d\lib\libvorbis\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)..\external\libvorbis-1.3.7\include;$(SolutionDir)..\external\libogg-1.3.6\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>_DEBUG;_CRT_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <DisableSpecificWarnings>4244;4100;4267;4189;4305;4127;4706;%(DisableSpecificWarnings)</DisableSpecificWarnings>
     </ClCompile>
     <Link>
       <ModuleDefinitionFile>ogg.def</ModuleDefinitionFile>
@@ -69,7 +71,9 @@
       <Optimization>Full</Optimization>
       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
       <WarningLevel>Level3</WarningLevel>
-      <AdditionalIncludeDirectories>D:\d\lib\libogg\include;D:\d\lib\libvorbis\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)..\external\libvorbis-1.3.7\include;$(SolutionDir)..\external\libogg-1.3.6\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <DisableSpecificWarnings>4244;4100;4267;4189;4305;4127;4706;%(DisableSpecificWarnings)</DisableSpecificWarnings>
     </ClCompile>
     <Link>
       <ModuleDefinitionFile>ogg.def</ModuleDefinitionFile>
@@ -80,6 +84,30 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="..\..\..\..\external\libogg-1.3.6\src\bitwise.c" />
+    <ClCompile Include="..\..\..\..\external\libogg-1.3.6\src\framing.c" />
+    <ClCompile Include="..\..\..\..\external\libvorbis-1.3.7\lib\analysis.c" />
+    <ClCompile Include="..\..\..\..\external\libvorbis-1.3.7\lib\bitrate.c" />
+    <ClCompile Include="..\..\..\..\external\libvorbis-1.3.7\lib\block.c" />
+    <ClCompile Include="..\..\..\..\external\libvorbis-1.3.7\lib\codebook.c" />
+    <ClCompile Include="..\..\..\..\external\libvorbis-1.3.7\lib\envelope.c" />
+    <ClCompile Include="..\..\..\..\external\libvorbis-1.3.7\lib\floor0.c" />
+    <ClCompile Include="..\..\..\..\external\libvorbis-1.3.7\lib\floor1.c" />
+    <ClCompile Include="..\..\..\..\external\libvorbis-1.3.7\lib\info.c" />
+    <ClCompile Include="..\..\..\..\external\libvorbis-1.3.7\lib\lookup.c" />
+    <ClCompile Include="..\..\..\..\external\libvorbis-1.3.7\lib\lpc.c" />
+    <ClCompile Include="..\..\..\..\external\libvorbis-1.3.7\lib\lsp.c" />
+    <ClCompile Include="..\..\..\..\external\libvorbis-1.3.7\lib\mapping0.c" />
+    <ClCompile Include="..\..\..\..\external\libvorbis-1.3.7\lib\mdct.c" />
+    <ClCompile Include="..\..\..\..\external\libvorbis-1.3.7\lib\psy.c" />
+    <ClCompile Include="..\..\..\..\external\libvorbis-1.3.7\lib\registry.c" />
+    <ClCompile Include="..\..\..\..\external\libvorbis-1.3.7\lib\res0.c" />
+    <ClCompile Include="..\..\..\..\external\libvorbis-1.3.7\lib\sharedbook.c" />
+    <ClCompile Include="..\..\..\..\external\libvorbis-1.3.7\lib\smallft.c" />
+    <ClCompile Include="..\..\..\..\external\libvorbis-1.3.7\lib\synthesis.c" />
+    <ClCompile Include="..\..\..\..\external\libvorbis-1.3.7\lib\vorbisenc.c" />
+    <ClCompile Include="..\..\..\..\external\libvorbis-1.3.7\lib\vorbisfile.c" />
+    <ClCompile Include="..\..\..\..\external\libvorbis-1.3.7\lib\window.c" />
     <ClCompile Include="ogg.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
