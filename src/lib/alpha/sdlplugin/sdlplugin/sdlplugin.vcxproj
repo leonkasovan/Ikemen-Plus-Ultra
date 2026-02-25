@@ -66,7 +66,7 @@
       <DataExecutionPrevention>
       </DataExecutionPrevention>
       <TargetMachine>MachineX86</TargetMachine>
-      <AdditionalLibraryDirectories>$(SolutionDir)..\external\SDL2-2.32.10\lib\x86;$(SolutionDir)..\external\SDL2_ttf-2.24.0\lib\x86;$(SolutionDir)..\external\SDL2_image-2.8.8\lib\x86;C:\d\lib\libs\Libpng_Release;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>$(SolutionDir)..\external\SDL2-2.32.10\lib\x86;$(SolutionDir)..\external\SDL2_ttf-2.24.0\lib\x86;$(SolutionDir)..\external\SDL2_image-2.8.8\lib\x86;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -88,7 +88,7 @@
       <DataExecutionPrevention>
       </DataExecutionPrevention>
       <TargetMachine>MachineX86</TargetMachine>
-      <AdditionalLibraryDirectories>$(SolutionDir)..\external\SDL2-2.32.10\lib\x86;$(SolutionDir)..\external\SDL2_ttf-2.24.0\lib\x86;$(SolutionDir)..\external\SDL2_image-2.8.8\lib\x86;C:\d\lib\zlib\projects\visualc6\Win32_DLL_Release;C:\d\lib\libpng\projects\visualc71\Win32_LIB_Release;C:\Program Files\Microsoft SDKs\Windows\v7.1\Lib;C:\Program Files\Microsoft SDKs\Windows\v7.0A\Lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>$(SolutionDir)..\external\SDL2-2.32.10\lib\x86;$(SolutionDir)..\external\SDL2_ttf-2.24.0\lib\x86;$(SolutionDir)..\external\SDL2_image-2.8.8\lib\x86;C:\Program Files\Microsoft SDKs\Windows\v7.1\Lib;C:\Program Files\Microsoft SDKs\Windows\v7.0A\Lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <AdditionalDependencies>Strmiids.lib;Quartz.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
