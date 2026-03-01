@@ -572,6 +572,7 @@ static void runner(MAIN_FUNC mf)
 
 
 #include "compiler-state.hpp"
+#include <stdio.h>
 
 TUserFunc(bool, Run, Reference r)
 {
@@ -579,6 +580,7 @@ TUserFunc(bool, Run, Reference r)
 	auto error = cs.compile(pu->refToWstr(r));
 	if(error.size() > 0){
 		MessageBox(nullptr, error.c_str(), g_dtitle, MB_OK | MB_ICONERROR);
+		printf("Error Message\n%ls\n\n", error.c_str());
 		return false;
 	}
 	return cs.run();
