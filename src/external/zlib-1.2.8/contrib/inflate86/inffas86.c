@@ -1,4 +1,3 @@
-#pragma warning(disable:4731)
 /* inffas86.c is a hand tuned assembler version of
  *
  * inffast.c -- fast decoding
@@ -69,6 +68,10 @@
       requires strm->avail_out >= 258 for each loop to avoid checking for
       output space.
  */
+#if defined(_MSC_VER)
+#pragma warning(push)
+#pragma warning(disable:4731)
+#endif
 void inflate_fast(strm, start)
 z_streamp strm;
 unsigned start;         /* inflate()'s starting value for strm->avail_out */
@@ -796,7 +799,9 @@ unsigned start;         /* inflate()'s starting value for strm->avail_out */
           : "memory", "%eax", "%ebx", "%ecx", "%edx", "%esi", "%edi"
     );
 #elif defined( _MSC_VER ) && ! defined( _M_AMD64 )
-    __asm {
+#pragma warning(push)
+#pragma warning(disable:4731)
+	__asm {
 	lea	eax, ar
 	mov	[eax], esp         /* save esp, ebp */
 	mov	[eax+4], ebp
@@ -1118,7 +1123,8 @@ L_break_loop_with_status:
 	mov	[esp+40], edx    /* save hold */
 	mov	ebp, [esp+4]     /* restore esp, ebp */
 	mov	esp, [esp]
-    }
+	}
+#pragma warning(pop)
 #else
 #error "x86 architecture not defined"
 #endif
@@ -1151,8 +1157,11 @@ L_break_loop_with_status:
     strm->avail_out = (unsigned)(ar.out < ar.end ?
                                  PAD_AVAIL_OUT + (ar.end - ar.out) :
                                  PAD_AVAIL_OUT - (ar.out - ar.end));
-    state->hold = ar.hold;
-    state->bits = ar.bits;
-    return;
+	state->hold = ar.hold;
+	state->bits = ar.bits;
+	return;
 }
+#if defined(_MSC_VER)
+#pragma warning(pop)
+#endif
 

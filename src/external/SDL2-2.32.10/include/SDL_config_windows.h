@@ -1,6 +1,6 @@
 /*
   Simple DirectMedia Layer
-  Copyright (C) 1997-2025 Sam Lantinga <slouken@libsdl.org>
+  Copyright (C) 1997-2026 Sam Lantinga <slouken@libsdl.org>
 
   This software is provided 'as-is', without any express or implied
   warranty.  In no event will the authors be held liable for any damages
@@ -320,7 +320,7 @@ typedef unsigned int uintptr_t;
 #endif
 
 /* Enable Vulkan support */
-#define SDL_VIDEO_VULKAN 1
+// #define SDL_VIDEO_VULKAN 1
 
 /* Enable system power support */
 #define SDL_POWER_WINDOWS 1

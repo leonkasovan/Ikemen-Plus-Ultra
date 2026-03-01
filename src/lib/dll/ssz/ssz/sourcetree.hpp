@@ -1,4 +1,23 @@
-﻿enum BlockType
+﻿#include <iostream>
+#include <string>
+
+// This tells std::cout how to handle std::wstring automatically
+inline std::ostream& operator<<(std::ostream& os, const std::wstring& wstr) {
+    // Use a standard for loop instead of the range-based one
+    for (size_t i = 0; i < wstr.length(); ++i) {
+        os << (char)wstr[i];
+    }
+    return os;
+}
+
+// Checks for the VS default (_DEBUG) or the standard (DEBUG)
+#if defined(_DEBUG) || defined(DEBUG)
+    #define DEBUG_LOG(x) std::cout << "[LOG] " << x << std::endl
+#else
+    #define DEBUG_LOG(x)
+#endif
+
+enum BlockType
 {
 	UNKNOWN_BLOCK=0, FUNC_BLOCK, CLASS_BLOCK, ENUM_BLOCK, NORMAL_BLOCK,
 	LOOP_BLOCK, SWITCH_BLOCK, BRANCH_BLOCK, LOCK_BLOCK, DELEGATE_BLOCK
@@ -23,6 +42,7 @@ public:
 	MEMBER bool loadDll(const std::WSTR& la)
 	{
 		hin = LoadLibrary(la.c_str());
+		DEBUG_LOG("loadDll[" << hin << "]: " << la);
 		return hin != nullptr;
 	}
 	MEMBER FARPROC getfunc(const std::WSTR& fn)
@@ -32,6 +52,7 @@ public:
 			if(fn[i] > 255) return nullptr;
 			s += (char)fn[i];
 		}
+		DEBUG_LOG("getfunc[" << hin << "]: " << s);
 		return GetProcAddress(hin, s.c_str());
 	}
 };

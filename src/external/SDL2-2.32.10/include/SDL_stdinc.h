@@ -1,6 +1,6 @@
 /*
   Simple DirectMedia Layer
-  Copyright (C) 1997-2025 Sam Lantinga <slouken@libsdl.org>
+  Copyright (C) 1997-2026 Sam Lantinga <slouken@libsdl.org>
 
   This software is provided 'as-is', without any express or implied
   warranty.  In no event will the authors be held liable for any damages
@@ -565,6 +565,7 @@ SDL_FORCE_INLINE void SDL_memset4(void *dst, Uint32 val, size_t dwords)
         return;
     }
     switch (dwords % 4) {
+        default:
         case 0: do {    *_p++ = _val;   SDL_FALLTHROUGH;
         case 3:         *_p++ = _val;   SDL_FALLTHROUGH;
         case 2:         *_p++ = _val;   SDL_FALLTHROUGH;

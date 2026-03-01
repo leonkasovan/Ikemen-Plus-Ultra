@@ -195,7 +195,7 @@
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <DisableSpecificWarnings>$(DisableSpecificWarnings)</DisableSpecificWarnings>
       <TreatWarningAsError>$(TreatWarningAsError)</TreatWarningAsError>
-      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
     </ClCompile>
     <Link>
       <TargetMachine>MachineX86</TargetMachine>
@@ -213,7 +213,7 @@
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <DisableSpecificWarnings>$(DisableSpecificWarnings)</DisableSpecificWarnings>
       <TreatWarningAsError>$(TreatWarningAsError)</TreatWarningAsError>
-      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>

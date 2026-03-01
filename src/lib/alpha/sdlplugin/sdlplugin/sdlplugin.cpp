@@ -47,7 +47,7 @@ SDL_Texture* g_target = nullptr;
 uint32_t* g_pix;
 SDL_GLContext g_gl = nullptr;
 int g_pitch;
-int g_w = 427, g_h = 240;
+int g_w = 640, g_h = 480;
 uint32_t g_scrflag = 0;
 SDL_AudioSpec g_desired;
 HGLRC g_hglrc, g_hglrc2;
@@ -438,89 +438,6 @@ void sndjoyinit()
 SDL_Surface *screenSurface = nullptr;
 SDL_Surface *PNGSurface = nullptr;
 
-/*
-static SDL_Surface* loadImage(std::string path) 
-{
-	//The final optimized image
-    SDL_Surface* optimizedSurface = NULL;
-
-	//Load image at specified path
-	SDL_Surface* loadedImage = IMG_Load(path.c_str());
-	if (loadedImage == NULL) 
-	{
-		//fprintf(stderr, "could not load image: %s\n", IMG_GetError());
-		//return NULL;
-	}
-	else
-	{
-		//Convert surface to screen format
-		optimizedSurface = SDL_ConvertSurface(loadedImage, screenSurface->format, 0);
-		if (optimizedSurface == NULL)
-		{
-			//fprintf(stderr, "could not optimize image: %s\n", SDL_GetError());
-		}
-		//Get rid of old loaded surface
-		SDL_FreeSurface(loadedImage);
-	}
-	return optimizedSurface;
-}
-*/
-
-/*
-TUserFunc(bool, loadPNG, Reference dir)
-{
-	//Loading success flag
-	bool success = true;
-
-	//Load PNG surface
-	//PNGSurface = loadImage(pu->refToAstr(CP_THREAD_ACP, dir).c_str());
-	PNGSurface = loadImage("test.png");
-	if(PNGSurface == NULL)
-	{
-		//printf( "Failed to load PNG image!\n" );
-		success = false;
-	}
-	return success;
-}
-*/
-
-//TUserFunc(bool, LoadPNG, Reference dir)
-bool LoadPNG()
-{
-	//The final optimized image
-    SDL_Surface* optimizedSurface = NULL;
-
-	//Load image at specified path
-	//SDL_Surface* loadedImage = IMG_Load(pu->refToAstr(CP_THREAD_ACP, dir).c_str());
-	SDL_Surface* loadedImage = IMG_Load("tools/test.png");
-	if (loadedImage == NULL) 
-	{
-		//fprintf(stderr, "could not load image: %s\n", IMG_GetError());
-		//return NULL;
-	}
-	else
-	{
-		//Convert surface to screen format
-		optimizedSurface = SDL_ConvertSurface(loadedImage, screenSurface->format, 0);
-		if (optimizedSurface == NULL)
-		{
-			//fprintf(stderr, "could not optimize image: %s\n", SDL_GetError());
-		}
-		//Get rid of old loaded surface
-		SDL_FreeSurface(loadedImage);
-	}
-	return optimizedSurface;
-}
-
-//TUserFunc(void, RenderPNG)
-void RenderPNG()
-{
-	//Apply the PNG image
-	SDL_BlitSurface(PNGSurface, NULL, screenSurface, NULL);
-	//Update the surface
-	SDL_UpdateWindowSurface(g_window);
-}
-
 int imgFlags = IMG_INIT_PNG;
 
 //System Render
@@ -586,7 +503,7 @@ TUserFunc(bool, GlInit, int32_t h, int32_t w, Reference cap)
 		g_gl = SDL_GL_CreateContext(g_window);
 		if(glewInit() != GLEW_OK) return false;
 		winProcInit();
-		if(h == 0) h = 1; 
+		if(h == 0) h = 1;
 		glShadeModel(GL_SMOOTH);
 		glClearColor(0.0, 0.0, 0.0, 1.0);
 		glEnable(GL_DEPTH_TEST);
@@ -1276,7 +1193,7 @@ TUserFunc(void, FadeInBGM, int time)
 
 TUserFunc(void, FadeOutBGM, int time)
 {
-	
+
 }
 
 TUserFunc(void, PlayVideo, Reference fn, Reference pldir)
@@ -3594,4 +3511,3 @@ TUserFunc(bool, UnbindGlContext)
 {
 	return wglMakeCurrent(nullptr, nullptr) != 0;
 }
-

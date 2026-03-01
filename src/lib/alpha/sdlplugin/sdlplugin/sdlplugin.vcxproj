@@ -41,10 +41,10 @@
     <_ProjectFileVersion>10.0.30319.1</_ProjectFileVersion>
     <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(SolutionDir)$(Configuration)\</OutDir>
     <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(Configuration)\</IntDir>
-    <OutDir Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">..\..\..\..\..\lib\alpha\dll</OutDir>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">..\..\..\..\..\lib\alpha\dll\</OutDir>
     <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(Configuration)\</IntDir>
-    <IncludePath Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">C:\d\lib\libs\zlib-1.2.8;C:\d\lib\libs\libpng;C:\d\lib\SDL2\SDL2_ttf\include;C:\d\lib\SDL2\SDL2_image\include;C:\d\lib\SDL2\include;C:\d\lib\glew\include;$(IncludePath)</IncludePath>
-    <IncludePath Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">C:\d\lib\libpng;C:\d\lib\SDL2\SDL2_ttf\include;C:\d\lib\SDL2\SDL2_image\include;C:\d\lib\SDL2\include;C:\d\lib\glew\include;C:\Program Files\Microsoft SDKs\Windows\v7.1\Include;C:\Program Files\Microsoft SDKs\Windows\v7.0A\Include;$(IncludePath)</IncludePath>
+    <IncludePath Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(SolutionDir)..\external\SDL2_ttf-2.24.0\;$(SolutionDir)..\external\SDL2_image-2.8.9\include\;$(IncludePath)</IncludePath>
+    <IncludePath Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(SolutionDir)..\external\SDL2_ttf-2.24.0\;$(SolutionDir)..\external\SDL2_image-2.8.9\include\;$(IncludePath)</IncludePath>
     <LibraryPath Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">C:\d\lib\SDL2\SDL2_ttf\lib\x86;C:\d\lib\SDL2\SDL2_image\lib\x86;C:\d\lib\SDL2\lib\x86;C:\d\lib\libpng\projects\visualc71\Win32_LIB_Release;C:\d\lib\zlib\projects\visualc6\Win32_DLL_Release;C:\d\lib\glew\lib\Release\Win32;C:\Program Files\Microsoft SDKs\Windows\v7.1\Lib;C:\Program Files\Microsoft SDKs\Windows\v7.0A\Lib;$(LibraryPath)</LibraryPath>
     <ExecutablePath Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">C:\d\lib\glew\bin\Release\Win32;C:\Program Files\Microsoft SDKs\Windows\v7.1\Bin;C:\Program Files\Microsoft SDKs\Windows\v7.0A\bin;$(ExecutablePath)</ExecutablePath>
     <ReferencePath Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(ReferencePath)</ReferencePath>
@@ -54,27 +54,28 @@
       <Optimization>Disabled</Optimization>
       <MinimalRebuild>true</MinimalRebuild>
       <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
-      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
       <WarningLevel>Level3</WarningLevel>
       <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
-      <AdditionalIncludeDirectories>$(SolutionDir)..\external\zlib-1.2.8;$(SolutionDir)..\external\lpng1655;$(SolutionDir)..\external\glew-1.13.0\include;$(SolutionDir)..\external\SDL2-2.32.10\include;$(SolutionDir)..\external\SDL2_image-2.8.8\include;$(SolutionDir)..\external\SDL2_ttf-2.24.0\include;C:\d\lib\libs\zlib-1.2.8;C:\d\lib\libs\libpng;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)..\external\zlib-1.2.8;$(SolutionDir)..\external\lpng1655;$(SolutionDir)..\external\glew-1.13.0\include;$(SolutionDir)..\external\SDL2-2.32.10\include;$(SolutionDir)..\external\SDL2_image-2.8.9\include;$(SolutionDir)..\external\SDL2_ttf-2.24.0\include;C:\d\lib\libs\zlib-1.2.8;C:\d\lib\libs\libpng;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;GLEW_STATIC;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <RandomizedBaseAddress>false</RandomizedBaseAddress>
+      <AdditionalDependencies>setupapi.lib;winmm.lib;imm32.lib;version.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <DataExecutionPrevention>
       </DataExecutionPrevention>
       <TargetMachine>MachineX86</TargetMachine>
-      <AdditionalLibraryDirectories>$(SolutionDir)..\external\SDL2-2.32.10\lib\x86;$(SolutionDir)..\external\SDL2_ttf-2.24.0\lib\x86;$(SolutionDir)..\external\SDL2_image-2.8.8\lib\x86;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>$(SolutionDir)..\external\SDL2-2.32.10\lib\;$(SolutionDir)..\external\SDL2_ttf-2.24.0\lib\;$(SolutionDir)..\external\SDL2_image-2.8.9\lib\;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <ClCompile>
       <Optimization>Full</Optimization>
-      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
       <WarningLevel>Level3</WarningLevel>
-      <AdditionalIncludeDirectories>$(SolutionDir)..\external\zlib-1.2.8;$(SolutionDir)..\external\lpng1655;$(SolutionDir)..\external\glew-1.13.0\include;$(SolutionDir)..\external\SDL2-2.32.10\include;$(SolutionDir)..\external\SDL2_image-2.8.8\include;$(SolutionDir)..\external\SDL2_ttf-2.24.0\include;C:\d\lib\libpng;C:\Program Files\Microsoft SDKs\Windows\v7.1\Include;C:\Program Files\Microsoft SDKs\Windows\v7.0A\Include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)..\external\zlib-1.2.8;$(SolutionDir)..\external\lpng1655;$(SolutionDir)..\external\glew-1.13.0\include;$(SolutionDir)..\external\SDL2-2.32.10\include;$(SolutionDir)..\external\SDL2_image-2.8.9\include;$(SolutionDir)..\external\SDL2_ttf-2.24.0\include;C:\d\lib\libpng;C:\Program Files\Microsoft SDKs\Windows\v7.1\Include;C:\Program Files\Microsoft SDKs\Windows\v7.0A\Include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <FavorSizeOrSpeed>Speed</FavorSizeOrSpeed>
       <EnableFiberSafeOptimizations>false</EnableFiberSafeOptimizations>
       <DisableLanguageExtensions>false</DisableLanguageExtensions>
@@ -88,8 +89,8 @@
       <DataExecutionPrevention>
       </DataExecutionPrevention>
       <TargetMachine>MachineX86</TargetMachine>
-      <AdditionalLibraryDirectories>$(SolutionDir)..\external\SDL2-2.32.10\lib\x86;$(SolutionDir)..\external\SDL2_ttf-2.24.0\lib\x86;$(SolutionDir)..\external\SDL2_image-2.8.8\lib\x86;C:\Program Files\Microsoft SDKs\Windows\v7.1\Lib;C:\Program Files\Microsoft SDKs\Windows\v7.0A\Lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>Strmiids.lib;Quartz.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>$(SolutionDir)..\external\SDL2-2.32.10\lib\;$(SolutionDir)..\external\SDL2_ttf-2.24.0\lib\;$(SolutionDir)..\external\SDL2_image-2.8.9\lib\;C:\Program Files\Microsoft SDKs\Windows\v7.1\Lib;C:\Program Files\Microsoft SDKs\Windows\v7.0A\Lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>Strmiids.lib;Quartz.lib;setupapi.lib;winmm.lib;imm32.lib;version.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
