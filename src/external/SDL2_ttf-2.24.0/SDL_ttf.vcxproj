@@ -53,11 +53,11 @@
     <CodeAnalysisRuleAssemblies Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" />
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
-    <IncludePath>external\freetype\include;external\harfbuzz;external\harfbuzz\src;$(SolutionDir)SDL\include;$(IncludePath)</IncludePath>
+    <IncludePath>$(ProjectDir)..\SDL2-2.32.10\include;$(ProjectDir)external\freetype\include;$(IncludePath)</IncludePath>
     <LibraryPath>$(SolutionDir)SDL\VisualC\$(PlatformName)\$(Configuration);$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
-    <IncludePath>$(ProjectDir)external\freetype\include;$(ProjectDir)..\SDL2-2.32.10\include;$(ProjectDir)external\harfbuzz;$(ProjectDir)external\harfbuzz\src;$(IncludePath)</IncludePath>
+    <IncludePath>$(ProjectDir)external\freetype\include;$(ProjectDir)..\SDL2-2.32.10\include;$(IncludePath)</IncludePath>
     <LibraryPath>$(SolutionDir)SDL\VisualC\$(PlatformName)\$(Configuration);$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
