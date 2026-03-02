@@ -7,10 +7,12 @@
 static const intptr_t TNT_OFFSET =
 	1 + (sizeof(intptr_t) + (sizeof(WCHR)-1)) / sizeof(WCHR);
 
+#include "static_plugin_registry.hpp"
 
 class SDLLItem
 {
 	HINSTANCE hin;
+	std::string baseName_; // Library base name for static registry lookup
 public:
 	MEMBER SDLLItem()
 	{
@@ -18,10 +20,23 @@ public:
 	}
 	MEMBER ~SDLLItem()
 	{
-		FreeLibrary(hin);
+		if(hin) FreeLibrary(hin);
 	}
 	MEMBER bool loadDll(const std::WSTR& la)
 	{
+		// Convert wide path to narrow string for registry lookup
+		std::string path;
+		for(intptr_t i = 0; i < IDX(la.size()); i++){
+			path += (char)la[i];
+		}
+		baseName_ = StaticPluginRegistry::extractBaseName(path);
+
+		// Check the static plugin registry first
+		if(StaticPluginRegistry::instance().hasLibrary(baseName_)){
+			return true;
+		}
+
+		// Fall back to dynamic DLL loading
 		hin = LoadLibrary(la.c_str());
 		return hin != nullptr;
 	}
@@ -32,6 +47,15 @@ public:
 			if(fn[i] > 255) return nullptr;
 			s += (char)fn[i];
 		}
+
+		// Check static registry first
+		void* ptr = StaticPluginRegistry::instance()
+			.lookupFunction(baseName_, s);
+		if(ptr){
+			return (FARPROC)ptr;
+		}
+
+		// Fall back to dynamic lookup
 		return GetProcAddress(hin, s.c_str());
 	}
 };

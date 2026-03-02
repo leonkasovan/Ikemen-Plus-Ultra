@@ -1,6 +1,8 @@
 ﻿#include <iostream>
 #include <string>
 
+#include "static_plugin_registry.hpp"
+
 // This tells std::cout how to handle std::wstring automatically
 inline std::ostream& operator<<(std::ostream& os, const std::wstring& wstr) {
     // Use a standard for loop instead of the range-based one
@@ -30,6 +32,7 @@ static const intptr_t TNT_OFFSET =
 class SDLLItem
 {
 	HINSTANCE hin;
+	std::string baseName_; // Library base name for static registry lookup
 public:
 	MEMBER SDLLItem()
 	{
@@ -37,10 +40,24 @@ public:
 	}
 	MEMBER ~SDLLItem()
 	{
-		FreeLibrary(hin);
+		if(hin) FreeLibrary(hin);
 	}
 	MEMBER bool loadDll(const std::WSTR& la)
 	{
+		// Convert wide path to narrow string for registry lookup
+		std::string path;
+		for(intptr_t i = 0; i < IDX(la.size()); i++){
+			path += (char)la[i];
+		}
+		baseName_ = StaticPluginRegistry::extractBaseName(path);
+
+		// Check the static plugin registry first
+		if(StaticPluginRegistry::instance().hasLibrary(baseName_)){
+			DEBUG_LOG("loadDll[static]: " << la);
+			return true;
+		}
+
+		// Fall back to dynamic DLL loading
 		hin = LoadLibrary(la.c_str());
 		DEBUG_LOG("loadDll[" << hin << "]: " << la);
 		return hin != nullptr;
@@ -52,6 +69,16 @@ public:
 			if(fn[i] > 255) return nullptr;
 			s += (char)fn[i];
 		}
+
+		// Check static registry first
+		void* ptr = StaticPluginRegistry::instance()
+			.lookupFunction(baseName_, s);
+		if(ptr){
+			DEBUG_LOG("getfunc[static]: " << s);
+			return (FARPROC)ptr;
+		}
+
+		// Fall back to dynamic lookup
 		DEBUG_LOG("getfunc[" << hin << "]: " << s);
 		return GetProcAddress(hin, s.c_str());
 	}
